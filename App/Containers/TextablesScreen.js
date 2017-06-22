@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ListView, Text } from 'react-native'
+import { View, ListView, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 
 // For empty lists
@@ -49,10 +49,10 @@ class ListviewSectionsExample extends React.Component {
     // You can condition on sectionID (key as string), for different cells
     // in different sections
     return (
-      <View style={styles.row}>
+      <TouchableOpacity style={styles.row}>
         <Text style={styles.boldLabel}>{rowData.name}</Text>
         <Text style={styles.label}>{rowData.art}</Text>
-      </View>
+      </TouchableOpacity>
     )
   }
 
@@ -81,12 +81,7 @@ class ListviewSectionsExample extends React.Component {
   }
 
   renderHeader (data, sectionID) {
-    switch (sectionID) {
-      case 'first':
-        return <View style={styles.sectionHeader}><Text style={styles.boldLabel}>First Section</Text></View>
-      default:
-        return <View style={styles.sectionHeader}><Text style={styles.boldLabel}>Second Section</Text></View>
-    }
+    return <View style={styles.sectionHeader}><Text style={styles.boldLabel}>{sectionID}</Text></View>
   }
 
   render () {
