@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ListView, Text, TouchableOpacity } from 'react-native'
+import { View, ListView, Text, TouchableOpacity, Clipboard } from 'react-native'
 import { connect } from 'react-redux'
 
 // For empty lists
@@ -17,7 +17,7 @@ class ListviewSectionsExample extends React.Component {
     * This is an array of objects with the properties you desire
     * Usually this should come from Redux mapStateToProps
     *************************************************************/
-    const dataObjects = require('../Fixtures/face.json')
+    const dataObjects = require('../Fixtures/faces.json')
     /* ***********************************************************
     * STEP 2
     * Teach datasource how to detect if rows are different
@@ -49,7 +49,7 @@ class ListviewSectionsExample extends React.Component {
     // You can condition on sectionID (key as string), for different cells
     // in different sections
     return (
-      <TouchableOpacity style={styles.row}>
+      <TouchableOpacity style={styles.row} onPress={() => Clipboard.setString(rowData.art)}>
         <Text style={styles.boldLabel}>{rowData.name}</Text>
         <Text style={styles.label}>{rowData.art}</Text>
       </TouchableOpacity>
